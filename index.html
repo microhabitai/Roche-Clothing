@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roche Clothing - Premium Nigerian Fashion</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #000000;
+            --text-light: #f5f3f0;
+            --text-cream: #e8e3dd;
+            --accent-gold: #c9a84c;
+            --accent-gold-dark: #a68837;
+            --white: #ffffff;
+            --gray-dark: #1a1a1a;
+            --gray-light: #2d2d2d;
+            --whatsapp-green: #25d366;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-light);
+        }
+
+        /* ===== NAVIGATION ===== */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-light);
+            letter-spacing: 2px;
+        }
+
+        .brand-tagline {
+            font-size: 0.7rem;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-cream);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            position: relative;
+            margin-top: 100px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.1) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-cream);
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-gold-dark);
+            border-color: var(--accent-gold-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 168, 76, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Marquee */
+        .marquee-container {
+            margin-top: 4rem;
+            overflow: hidden;
+            background: rgba(201, 168, 76, 0.05);
+            padding: 1rem 0;
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .marquee {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .marquee span {
+            margin-right: 3rem;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== FEATURED COLLECTIONS ===== */
+        .collections {
+            padding: 6rem 2rem;
+            background: var(--primary-dark);
+        }
+
+        .collections-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .section-subheading {
+            text-align: center;
+            color: var(--accent-gold);
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .collection-card {
+            background: var(--gray-dark);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .collection-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(201, 168, 76, 0.15);
+        }
+
+        .collection-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .collection-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .collection-card:hover .collection-image img {
+            transform: scale(1.05);
+        }
+
+        .collection-info {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .collection-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .collection-price {
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .collection-card .btn {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* ===== FEATURES STRIP ===== */
+        .features {
+            background: var(--gray-dark);
+            padding: 4rem 2rem;
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .features-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-gold);
+        }
+
+        .feature-item p {
+            color: var(--text-cream);
+            font-size: 0.95rem;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            padding: 6rem 2rem;
+            background: var(--primary-dark);
+        }
+
+        .about-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-cream);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== CONTACT/CTA SECTION ===== */
+        .contact {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            border-top: 2px solid var(--accent-gold);
+        }
+
+        .contact h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            color: var(--text-cream);
+            margin-bottom: 2rem;
+        }
+
+        .btn-whatsapp {
+            background: var(--whatsapp-green);
+            color: var(--white);
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: var(--transition);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1ead4f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-icon {
+            font-size: 1.3rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--gray-dark);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-copyright {
+            color: var(--text-cream);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav {
+                padding: 0;
+            }
+
+            .brand-name {
+                font-size: 1.3rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                background: rgba(0, 0, 0, 0.98);
+                padding: 2rem 1rem;
+                border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+                padding: 1rem 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                margin-top: 80px;
+                height: 90vh;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .hero-buttons .btn {
+                padding: 0.9rem 2rem;
+            }
+
+            .marquee-container {
+                margin-top: 2rem;
+            }
+
+            .collections {
+                padding: 4rem 1rem;
+            }
+
+            .section-heading {
+                font-size: 2rem;
+            }
+
+            .collection-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .collection-image {
+                height: 280px;
+            }
+
+            .features-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about {
+                padding: 4rem 1rem;
+            }
+
+            .about h2 {
+                font-size: 1.8rem;
+            }
+
+            .about p {
+                font-size: 1rem;
+            }
+
+            .contact {
+                padding: 4rem 1rem;
+            }
+
+            .contact h2 {
+                font-size: 2rem;
+            }
+
+            .contact p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-name {
+                font-size: 1rem;
+            }
+
+            .brand-tagline {
+                font-size: 0.6rem;
+            }
+
+            .hero {
+                margin-top: 70px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .marquee {
+                font-size: 0.8rem;
+            }
+
+            .marquee span {
+                margin-right: 2rem;
+            }
+
+            .section-heading {
+                font-size: 1.5rem;
+            }
+
+            .feature-item h3 {
+                font-size: 1.1rem;
+            }
+
+            .about h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact h2 {
+                font-size: 1.5rem;
+            }
+
+            .btn-whatsapp {
+                padding: 1rem 2rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <header>
+        <nav>
+            <div class="brand">
+                <div class="brand-name">ROCHE</div>
+                <div class="brand-tagline">Clothing Co.</div>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#collections">Collections</a></li>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Wear the Confidence</h1>
+            <p>Premium fashion for everyone who dares to stand out</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('collections').scrollIntoView({behavior: 'smooth'})">Shop Collection</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">Our Story</button>
+            </div>
+        </div>
+        <div class="marquee-container">
+            <div class="marquee">
+                <span>New Arrivals</span>
+                <span>•</span>
+                <span>Premium Quality</span>
+                <span>•</span>
+                <span>Fast Delivery</span>
+                <span>•</span>
+                <span>Nigerian Fashion</span>
+                <span>•</span>
+                <span>Roche Clothing</span>
+                <span>New Arrivals</span>
+                <span>•</span>
+                <span>Premium Quality</span>
+                <span>•</span>
+                <span>Fast Delivery</span>
+                <span>•</span>
+                <span>Nigerian Fashion</span>
+                <span>•</span>
+                <span>Roche Clothing</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED COLLECTIONS -->
+    <section class="collections" id="collections">
+        <div class="collections-wrapper">
+            <h2 class="section-heading">Featured Collections</h2>
+            <p class="section-subheading">Curated Pieces for Every Occasion</p>
+            
+            <div class="collection-grid">
+                <!-- Card 1 -->
+                <div class="collection-card">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&h=500&fit=crop" alt="Elegant Evening Wear">
+                    </div>
+                    <div class="collection-info">
+                        <h3 class="collection-name">Elegance Collection</h3>
+                        <p class="collection-price">₦45,000</p>
+                        <button class="btn btn-primary">View Item</button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="collection-card">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1515622593877-abc6f38fd2ba?w=500&h=500&fit=crop" alt="Casual Chic">
+                    </div>
+                    <div class="collection-info">
+                        <h3 class="collection-name">Casual Vibes</h3>
+                        <p class="collection-price">₦28,500</p>
+                        <button class="btn btn-primary">View Item</button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="collection-card">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1595558925534-0debac50b42d?w=500&h=500&fit=crop" alt="Ankara Collection">
+                    </div>
+                    <div class="collection-info">
+                        <h3 class="collection-name">Heritage Line</h3>
+                        <p class="collection-price">₦38,000</p>
+                        <button class="btn btn-primary">View Item</button>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="collection-card">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1556821552-5ff63b1b9786?w=500&h=500&fit=crop" alt="Luxury Blazer">
+                    </div>
+                    <div class="collection-info">
+                        <h3 class="collection-name">Power Series</h3>
+                        <p class="collection-price">₦52,000</p>
+                        <button class="btn btn-primary">View Item</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES STRIP -->
+    <section class="features">
+        <div class="features-wrapper">
+            <div class="feature-item">
+                <h3>Premium Quality</h3>
+                <p>Crafted with the finest fabrics and attention to detail. Every piece is made to last.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Fast Delivery</h3>
+                <p>Get your orders delivered within 24-48 hours across Lagos and major Nigerian cities.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Easy Returns</h3>
+                <p>Not quite right? Return it within 7 days for a full refund. No questions asked.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <div class="about-wrapper">
+            <h2>Our Story</h2>
+            <p>
+                Roche Clothing was born from a passion to celebrate authentic self-expression through fashion. We believe style 
+                is more than just clothing—it's a statement of confidence, individuality, and pride.
+            </p>
+            <p>
+                Every piece in our collection is thoughtfully designed to empower you, whether you're heading to the 
+                boardroom, a social event, or simply conquering your day. We blend contemporary design with traditional 
+                African aesthetics to create timeless pieces that resonate with your unique style.
+            </p>
+            <p>
+                From our family to yours, Roche Clothing is committed to delivering luxury fashion that's accessible, 
+                sustainable, and unapologetically African.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTACT/CTA SECTION -->
+    <section class="contact" id="contact">
+        <h2>Let's Talk Style</h2>
+        <p>Have questions or want to discuss a custom piece? We're here to help.</p>
+        <a href="https://wa.me/2347000000000?text=Hi%20Roche%20Clothing!%20I%20would%20like%20to%20know%20more%20about%20your%20collections" class="btn-whatsapp" target="_blank">
+            <span class="whatsapp-icon">💬</span>
+            Message us on WhatsApp
+        </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">ROCHE CLOTHING</div>
+            <p class="footer-copyright">&copy; 2026 Roche Clothing Co. All rights reserved. | Wear the Confidence</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav') && !e.target.closest('.hamburger')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
